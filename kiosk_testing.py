@@ -24,7 +24,7 @@ scenario_8_SIT = 'https://worldview.sit.earthdata.nasa.gov/?v=-9215416.788865805
 
 
 # Replace the following with the 4 pannels you want to test
-urls = [scenario_1_SIT, scenario_2_SIT, scenario_3_SIT, scenario_4_SIT]
+urls = [scenario_5_SIT, scenario_6_SIT, scenario_7_SIT, scenario_8_SIT]
 
 options = Options()
 options.headless = False
