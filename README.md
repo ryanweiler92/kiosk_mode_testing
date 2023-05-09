@@ -20,7 +20,7 @@ To run this script, you need to have the following installed on your system:
 ## Usage
 
 1. Open the `kiosk_testing.py` file and modify the variables in the url array to include the scenarios you would like to test. Only 4 scenarios can be tested at a single time. 
-2. Run the script using the following command in your terminal: `python browser_automation.py`
+2. Run the script using the following command in your terminal: `python kiosk_testing.py`
 
 The script will open four instances of Google Chrome, each displaying one of the specified URLs. The pages will refresh every 90 seconds.
 
