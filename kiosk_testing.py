@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import os
 
@@ -21,10 +22,18 @@ scenario_6_SIT = 'https://worldview.sit.earthdata.nasa.gov/?v=-249.0656215906355
 scenario_7_SIT = 'https://worldview.sit.earthdata.nasa.gov/?v=-250.02535487803547,-114.4840680358938,251.1027632513897,109.71856398138546&df=true&kiosk=true&l=Coastlines_15m,MODIS_Aqua_L3_Land_Surface_Temp_Daily_Day,MODIS_Aqua_CorrectedReflectance_TrueColor(opacity=0.7)&lg=true'
 scenario_8_SIT = 'https://worldview.sit.earthdata.nasa.gov/?v=-9215416.788865805,-4212995.281243633,9489665.699466601,4155580.686192584&p=arctic&df=true&kiosk=true&eic=da&l=Land_Mask,AMSRU2_Sea_Ice_Concentration_12km(palette=blue_6)&lg=true'
 
-
+scenario_1_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&l=OrbitTracks_Terra_Descending(opacity=0.9),Coastlines_15m,MODIS_Terra_CorrectedReflectance_TrueColor&lg=false'
+scenario_2_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&l=Coastlines_15m(opacity=0.63),VIIRS_SNPP_DayNightBand_At_Sensor_Radiance&lg=true'
+scenario_3_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&z=4&ics=true&ici=5&icd=10&df=true&kiosk=true&eic=sa&l=Reference_Features_15m,GOES-East_ABI_GeoColor,GOES-West_ABI_GeoColor,VIIRS_SNPP_CorrectedReflectance_TrueColor(opacity=0.61)&lg=true'
+scenario_4_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&l=Coastlines_15m,VIIRS_SNPP_Thermal_Anomalies_375m_Day,VIIRS_SNPP_CorrectedReflectance_TrueColor&lg=true'
+scenario_5_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&l=IMERG_Precipitation_Rate,Land_Mask&lg=false'
+scenario_6_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&l=Coastlines_15m(opacity=0.71),GHRSST_L4_MUR_Sea_Surface_Temperature(palette=rainbow_1)&lg=true'
+scenario_7_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&l=Coastlines_15m,MODIS_Aqua_Land_Surface_Temp_Day,MODIS_Aqua_CorrectedReflectance_TrueColor(opacity=0.7)&lg=true'
+scenario_8_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-4171187.01916682,-4238559.180936186,4142545.3786389525,4188800.5389352706&p=arctic&df=true&kiosk=true&eic=da&l=Land_Mask,AMSRU2_Sea_Ice_Concentration_12km(palette=blue_6)&lg=true'
+scenario_9_UAT = 'https://worldview.uat.earthdata.nasa.gov/?v=-4171187.01916682,-4238559.180936186,4142545.3786389525,4188800.5389352706&p=antarctic&df=true&kiosk=true&eic=da&l=Land_Mask,AMSRU2_Sea_Ice_Concentration_12km(palette=blue_6)&lg=true'
 
 # Replace the following with the 4 pannels you want to test
-urls = [scenario_1_SIT, scenario_2_SIT, scenario_3_SIT, scenario_4_SIT]
+urls = [scenario_1_UAT, scenario_2_UAT, scenario_3_UAT, scenario_4_UAT]
 
 options = Options()
 options.headless = False
@@ -34,7 +43,7 @@ screen_width = int(os.environ.get("WIDTH", 1920))
 screen_height = int(os.environ.get("HEIGHT", 1080))
 
 # Create browser instances
-browsers = [webdriver.Chrome(options=options) for _ in range(4)]
+browsers = [webdriver.Chrome(ChromeDriverManager().install(), options=options) for _ in range(4)]
 
 # Set window positions and sizes for each instance
 window_width = screen_width // 2
