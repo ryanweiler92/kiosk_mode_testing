@@ -56,4 +56,5 @@ for i, browser in enumerate(browsers):
 while True:
     for browser, url in zip(browsers, urls):
         browser.get(url)
+        browser.execute_cdp_cmd('Network.clearBrowserCache', {})  # Clear cache
     time.sleep(90)
